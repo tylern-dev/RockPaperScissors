@@ -6,6 +6,9 @@
 </head>
 <body>
 	<h2>Press R, P, or S to begin: <span id="user-text"></span></h2>
+	<p>wins:<span id="win"></span></p>
+	<p>losses:<span id="lose"></span></p>
+	<p>Ties:<span id="tie"></span></p>
 
 	
 
@@ -15,11 +18,52 @@
 		
 
 		var userChoice = document.getElementById("user-text");
-		var computerChoice = 
+		var computerChoice = Math.random();
+		var wins;
+		var losses;
+		var ties;
+		var games = 3;
 
-		document.onkeyup = function(event){
-		  userChoice.textContent = event.key;
+
+		
+	
+
+		//*for some reason when this runs, the console always says that computer wins. It never changes.
+
+		//game logic
+		for (var i = 0; i < games; i++){
+
+			document.onkeyup = function(event){
+		  		userChoice.textContent = event.key;
+			}
+
+			//random generator for computer choosing r, p, ors s
+			if (computerChoice < 0.34){
+				computerChoice = "r";
+			} else if (computerChoice <=0.64){
+				computerChoice = "p";
+			} else {
+				computerChoice = "s";
+			}
+			
+			if (userChoice === computerChoice){
+				console.log("tie!")
+			}	else if (userChoice === 'r' && computerChoice === 's'){
+				console.log("user wins");
+			} else if (userChoice === 'p' && computerChoice === 'r'){
+				console.log ("user wins")
+			} else if (userChoice === 's' && computerChoice === 'p'){
+				console.log ("user wins")
+			} else {
+				console.log("computer wins!")
+			}
+
+			
 		}
+
+		
+
+
 	</script>
 </body>
 </html>
